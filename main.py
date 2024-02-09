@@ -2,8 +2,16 @@ import os
 
 from openai import OpenAI
 
+from configparser import ConfigParser
+
+config = ConfigParser()
+
+config.read("config_file.ini")
+
+config_data = config["DEFAULT"]
+
 client = OpenAI(
-    api_key= "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"
+    api_key= str(config_data['api_key'])
 )
 
 respuesta = "s"
